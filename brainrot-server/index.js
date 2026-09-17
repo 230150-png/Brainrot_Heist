@@ -14,7 +14,7 @@ const db = createDb(DB_PATH);
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(__dirname));
 app.get('/layout.js', (req, res) => res.sendFile(path.join(__dirname, 'layout.js')));
 
 // ---------------- auth middleware ----------------
