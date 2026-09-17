@@ -9,12 +9,17 @@ const sm = require('./serverManager');
 const { GameRoom, PLOTS_PER_BASE, HATCH_BASE_COST } = require('./gameRoom');
 
 const PORT = process.env.PORT || 8787;
-const DB_PATH = process.env.DB_PATH || path.join(__dirname, '..', 'data', 'brainrot.db');
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'data', 'brainrot.db');
+
 const db = createDb(DB_PATH);
 
 const app = express();
+
 app.use(express.json());
+
+// Serve index.html and other files from the project root
 app.use(express.static(__dirname));
+
 app.get('/layout.js', (req, res) => res.sendFile(path.join(__dirname, 'layout.js')));
 
 // ---------------- auth middleware ----------------
@@ -213,8 +218,8 @@ wss.on('connection', (ws, req) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Brainrot Heist multiplayer server listening on http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Brainrot Heist multiplayer server listening on port ${PORT}`);
 });
 
 module.exports = { app, server };
