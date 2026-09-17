@@ -2,14 +2,14 @@
   "name": "brainrot-heist-multiplayer",
   "version": "1.0.0",
   "description": "Brainrot Heist 3D — 6-player multiplayer server (accounts, player-created lobbies, host transfer, shared-consent deletion voting, server-authoritative economy).",
-  "main": "server/index.js",
+  "main": "index.js",
   "engines": {
     "node": ">=22.5.0"
   },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node index.js",
     "test": "node --test",
-    "smoke": "node scripts/ws-smoke.js"
+    "smoke": "node ws-smoke.js"
   },
   "keywords": [],
   "author": "",
